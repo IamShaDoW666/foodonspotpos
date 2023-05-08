@@ -3,7 +3,7 @@ import Image from "next/image";
 const Sidebar = () => {
     return (
         <div className="sm:flex flex-row w-auto hidden flex-shrink-0 pl-4 pr-2 py-4">
-            <div className="flex flex-col items-center py-4 flex-shrink-0 w-20 bg-emerald-500 rounded-3xl">
+            <div className="flex flex-col items-center py-4 flex-shrink-0 w-20 bg-primary rounded-3xl">
                 <a href="#"
                     className="flex items-center justify-center h-12 w-12 bg-cyan-50 text-cyan-700 rounded-full">
                     <Image
