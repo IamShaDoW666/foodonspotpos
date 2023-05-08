@@ -7,6 +7,7 @@ import Spinner from "@/components/Spinner";
 import CategoriesGhost from "./components/CategoriesGhost";
 import { useState } from "react";
 import Image from "next/image";
+import PosLayout from "@/layouts/PosLayout";
 
 const Pos: NextPage = () => {
     const categoriesWithProducts = api.pos.getAllCategoriesWithProducts.useQuery()
@@ -19,9 +20,7 @@ const Pos: NextPage = () => {
         );
     })
     return (
-        <div className="hide-print flex flex-row h-screen antialiased text-blue-gray-800">
-            <Sidebar />
-            {/* <p>{JSON.stringify(filteredProducts)}</p> */}
+        <PosLayout>
             <div className="flex flex-col bg-blue-gray-50 h-full w-full py-4">
                 <Search search={search} setSearch={setSearch} products={categoriesWithProducts.data?.products} />
                 <div className="h-full overflow-hidden mt-4">
@@ -86,7 +85,7 @@ const Pos: NextPage = () => {
                     </div>
                 </div>
             </div >
-        </div >
+        </PosLayout>
     );
 }
 
