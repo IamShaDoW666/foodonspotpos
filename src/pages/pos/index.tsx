@@ -57,7 +57,7 @@ const Pos: NextPage = () => {
                                 <div className="flex gap-x-2">
                                     {
                                         categoriesWithProducts.data?.categoriesWithProducts.map((category) => {
-                                            return (category.products.length != 0) && <a href={'#' + category.name} className="bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-500 cursor-pointer text-md sm:text-xl rounded shadow text-white font-bold px-4 py-2">
+                                            return (category.products.length != 0) && <a href={'#' + category.name} className="bg-primary hover:bg-emerald-400 active:bg-primary cursor-pointer text-md sm:text-xl rounded shadow text-white font-bold px-4 py-2">
                                                 {category.name}
                                             </a>
                                         })
@@ -69,7 +69,7 @@ const Pos: NextPage = () => {
                             categoriesWithProducts.isLoading ? <Spinner /> : <div>
                                 {categoriesWithProducts.data?.categoriesWithProducts.map((category) => {
                                     return (category.products.length != 0) && (<section className="pt-[5rem]" id={category.name} key={category.id}>
-                                        <h1 className="text-center text-xl sm:text-2xl md:text-5xl my-4 py-4 bg-emerald-500 rounded-2xl max-w-xl mx-auto shadow text-white font-semibold">{category.name}</h1>
+                                        <h1 className="text-center text-xl sm:text-2xl md:text-5xl my-4 py-4 bg-primary rounded-2xl max-w-xl mx-auto shadow text-white font-semibold">{category.name}</h1>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-4 px-4">
                                             {category.products?.map((product) => (
                                                 <ProductCard key={product.id} name={product.name} price={product.price.toString()} />
