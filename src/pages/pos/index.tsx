@@ -7,6 +7,8 @@ import CategoriesGhost from "./components/CategoriesGhost";
 import { useState } from "react";
 import Image from "next/image";
 import PosLayout from "@/layouts/PosLayout";
+import Head from "next/head";
+
 
 const Pos: NextPage = () => {
     const categoriesWithProducts = api.pos.getAllCategoriesWithProducts.useQuery()
@@ -20,6 +22,12 @@ const Pos: NextPage = () => {
     })
     return (
         <PosLayout>
+            <Head>
+                <title>Food on Spot - POS</title>
+                <meta name="title" content="Food on Spot POS" />
+                <meta name="description" content="Point of Sale Web Application" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <div className="flex flex-col bg-blue-gray-50 h-full w-full py-4">
                 <Search search={search} setSearch={setSearch} products={categoriesWithProducts.data?.products} />
                 <div className="h-full overflow-hidden mt-4">
