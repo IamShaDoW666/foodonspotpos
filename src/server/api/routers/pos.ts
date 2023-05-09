@@ -4,7 +4,7 @@ import {
 } from "@/server/api/trpc";
 import type { Category, Product } from "@prisma/client";
 export 
-const formatter = new Intl.NumberFormat('en-US', {currency: 'USD', style: 'currency'})
+const formatter = new Intl.NumberFormat('en-US', {currency: 'USD', style: 'currency', minimumFractionDigits: 0, maximumFractionDigits: 2})
 const filter = (category: Category & {products: Product[]}) => {
     return {
         id: category.id,
