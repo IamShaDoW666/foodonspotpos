@@ -5,8 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-  const examples = api.example.getAll.useQuery();    
+  const hello = api.example.hello.useQuery({ text: "from tRPC" });  
   return (
     <>
       <Head>
@@ -16,13 +15,6 @@ const Home: NextPage = () => {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <div className="grid grid-cols-3 gap-4">
-            {examples.data?.map((example) => (
-              <div className="bg-cyan-300 rounded p-8 shadow">
-                <h1 className="text-xl text-gray-800">{example.id}</h1>
-              </div>
-            ))}                      
-          </div>
           <div className="flex flex-col items-center gap-2">
             <p className="text-2xl text-white">
               {hello.data ? hello.data.greeting : "Loading tRPC query..."}

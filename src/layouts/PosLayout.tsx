@@ -1,5 +1,5 @@
 import Sidebar from "@/pages/pos/components/Sidebar";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 const PosLayout = ({ children }: PropsWithChildren) => {
     return (
