@@ -30,7 +30,7 @@ const Pos: NextPage = () => {
                             <div className="w-full text-center">
                                 <Image src="/box.svg" alt="Box" className="mx-auto" height={200} width={200} />
                                 <p className="text-xl pt-8">
-                                    YOU DON'T HAVE ANY PRODUCTS TO SHOW
+                                    {"YOU DON'T HAVE ANY PRODUCTS TO SHOW"}
                                 </p>
                             </div>
                         </div>}
@@ -50,7 +50,7 @@ const Pos: NextPage = () => {
                         </div>}
                         {(categoriesWithProducts.data?.categoriesWithProducts.length != 0) && <section className="bg-white sticky top-0 rounded-2xl shadow-md p-4">
                             {categoriesWithProducts.isLoading ? <CategoriesGhost /> :
-                                <div className="flex gap-x-2">
+                                <div className="flex gap-x-2 overflow-x-auto">
                                     {
                                         categoriesWithProducts.data?.categoriesWithProducts.map((category) => {
                                             return (category.products.length != 0) && <a href={'#' + category.name} className="bg-primary hover:bg-emerald-400 active:bg-primary cursor-pointer text-md sm:text-xl rounded shadow text-white font-bold px-4 py-2">

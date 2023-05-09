@@ -11,8 +11,8 @@ const ProductCard = ({ name, price }: Props) => {
             >
                 <Image className="mx-auto pt-4" src='/box.svg' alt="Product image" width={200} height={300} />
                 <div className="flex py-4 px-6 text-sm">
-                    <p className="flex-grow truncate mr-1">{name}</p>
-                    <p className="nowrap font-semibold">{price}</p>
+                    <p className="flex-grow text-slate-600 truncate mr-1">{name}</p>
+                    <p className="nowrap text-slate-600 font-semibold">{price}</p>
                 </div>
             </div>
         </div>
