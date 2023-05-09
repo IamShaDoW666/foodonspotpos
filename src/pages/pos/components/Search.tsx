@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
 interface Product {
     id: string;
     name: string;
@@ -11,7 +11,7 @@ interface Props {
     search: string
     setSearch: Dispatch<SetStateAction<string>>
 }
-const Search = ({ products, search, setSearch }: Props) => {    
+const Search = ({ search, setSearch }: Props) => {    
     return (
         <div className="flex px-2 flex-row relative">
             <div className="absolute left-5 top-3 px-2 py-2 rounded-full bg-primary text-white">

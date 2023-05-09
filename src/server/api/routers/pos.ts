@@ -2,7 +2,7 @@ import {
     createTRPCRouter,
     publicProcedure,
 } from "@/server/api/trpc";
-import { Category, Product } from "@prisma/client";
+import type { Category, Product } from "@prisma/client";
 export 
 const formatter = new Intl.NumberFormat('en-US', {currency: 'USD', style: 'currency'})
 const filter = (category: Category & {products: Product[]}) => {

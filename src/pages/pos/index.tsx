@@ -1,7 +1,6 @@
 import { api } from "@/utils/api";
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import ProductCard from "./components/ProductCard";
-import Sidebar from "./components/Sidebar";
 import Search from "./components/Search";
 import Spinner from "@/components/Spinner";
 import CategoriesGhost from "./components/CategoriesGhost";
@@ -29,11 +28,9 @@ const Pos: NextPage = () => {
                             className="select-none bg-blue-gray-100 rounded-3xl flex flex-wrap content-center justify-center h-full opacity-25"
                         >
                             <div className="w-full text-center">
-                                <Image src='/box.svg' alt="Box" className="mx-auto" height={200} width={200} />
+                                <Image src="/box.svg" alt="Box" className="mx-auto" height={200} width={200} />
                                 <p className="text-xl pt-8">
-                                    YOU DON'T HAVE
-                                    <br />
-                                    ANY PRODUCTS TO SHOW
+                                    YOU DON'T HAVE ANY PRODUCTS TO SHOW
                                 </p>
                             </div>
                         </div>}

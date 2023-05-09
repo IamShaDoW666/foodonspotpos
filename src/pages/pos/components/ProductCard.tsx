@@ -1,14 +1,9 @@
 import Image from "next/image";
 interface Props {
-    name: String
-    price?: String
+    name: string
+    price?: string
 }
 const ProductCard = ({ name, price }: Props) => {
-    let formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    });
-
     return (
         <div className="">
             <div
