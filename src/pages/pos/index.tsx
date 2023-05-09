@@ -9,6 +9,7 @@ import Image from "next/image";
 import PosLayout from "@/layouts/PosLayout";
 import Head from "next/head";
 
+
 const Pos: NextPage = () => {
     const categoriesWithProducts = api.pos.getAllCategoriesWithProducts.useQuery()
     const [search, setSearch] = useState<string>('');
