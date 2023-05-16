@@ -22,13 +22,31 @@ async function main() {
             })
             //Seed Products
             for (let i = 0; i < Math.floor(Math.random() * 10); i++) {
-                await prisma.product.create({
+                const product = await prisma.product.create({
                     data: {
                         name: faker.helpers.unique(faker.commerce.productName),
                         price: Math.floor(Math.random() * 100),
                         categoryId: category.id
                     }
                 })
+
+                for (let j = 0; j < Math.floor(Math.random() * 10); j++) {
+                    const option = await prisma.option.create({
+                        data: {
+                            name: faker.helpers.unique(faker.animal.insect),
+                            productId: product.id
+                        }
+                    })
+                    for (let k = 0; k < Math.floor(Math.random() * 10); k++) {
+                        await prisma.variant.create({
+                            data: {
+                                name: faker.helpers.unique(faker.address.cityName),
+                                price: Math.floor(Math.random() * 100),
+                                optionId: option.id
+                            }
+                        })
+                    }
+                }
             }
         }
     } catch (error) {

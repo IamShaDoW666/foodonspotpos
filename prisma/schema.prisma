@@ -18,23 +18,52 @@ model Example {
 }
 
 model Product {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  price     Int
-  category Category @relation(fields: [categoryId], references: [id])
+  id         String    @id @default(cuid())
+  name       String    @unique
+  price      Int
+  category   Category  @relation(fields: [categoryId], references: [id])
+  options    Option[]
+  variants   Variant[]
   categoryId String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 
   @@index([categoryId])
 }
 
-model Category {
+model Variant {
   id        String   @id @default(cuid())
   name      String   @unique
-  products Product[]
+  price     Int
+  option    Option   @relation(fields: [optionId], references: [id])
+  optionId  String
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([optionId])
+  @@index([productId])
+}
+
+model Option {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  variants  Variant[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Product   Product?  @relation(fields: [productId], references: [id])
+  productId String?
+
+  @@index([productId])
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 // Necessary for Next auth

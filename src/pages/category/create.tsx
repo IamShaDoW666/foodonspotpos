@@ -1,11 +1,20 @@
 import PosLayout from "@/layouts/PosLayout";
-import PrimaryButton from "@/components/PrimaryButton";
+import PrimaryButton, { classNames } from "@/components/PrimaryButton";
+import { api } from "@/utils/api";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 const CategoryCreate = () => {
+    const mutation = api.category.create.useMutation()
+    const [categoryName, setCategoryName] = useState('');
+    const router = useRouter();
     const createCategory = () => {
-        alert('Create')
+        mutation.mutate({ name: categoryName })                
     }
-
-
+    useEffect(() => {
+        if (mutation.isSuccess) {
+            router.push('/product')
+        }
+    }, [mutation])
     return (
         <PosLayout>
             <div className="h-full w-full rounded-3xl p-4">
@@ -19,14 +28,15 @@ const CategoryCreate = () => {
                             <div className="mt-4">
                                 <input
                                     type="text"
-                                    name="first-name"
-                                    id="first-name"
+                                    value={categoryName}
+                                    onChange={(e) => setCategoryName(e.target.value)}
                                     autoComplete="given-name"
                                     className="block w-full rounded-md border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-2xl sm:leading-6"
                                 />
                             </div>
+                            {mutation.error && <p>Something went wrong! {mutation.error.message}</p>}
                             <div className="text-right mt-4">
-                                <PrimaryButton click={createCategory} text="Create" classes="sm:text-2xl" />
+                                <PrimaryButton disabled={mutation.isLoading} click={createCategory} text="Create" classes={classNames(mutation.isLoading ? 'opacity-25' : '', 'sm:text-2xl')} />
                             </div>
                         </div>
                     </div>
